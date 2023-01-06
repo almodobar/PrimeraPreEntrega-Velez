@@ -1,27 +1,130 @@
-body {
+:root {
+    --max-width: 1280px;
+    --min-width: 320px;
+    --accent-color: #00c2ff;
+}
+
+* { box-sizing: border-box;}
+
+html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
+    background-color: black;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-width: var(--min-width);
+    background-image: url(./img/backgroundImg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 
-nav ul li{
-    list-style-type: none;
-    display: inline-flex;
-    align-items: flex-end;
-    justify-content: end;
-    margin: 15px;
-    padding: 10px;
+/* Header */
+.cabeza, .content, .footer {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-main {
-    display: grid;
-    justify-content: center;
-    align-content: center;
+.cabeza {
+    max-width: var(--max-width);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-footer ul li {
-    list-style-type: none;
+.logo {
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 10% / 50%;
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.logo, img {
+    margin-right: 1rem;
+}
+
+.menuList {
+    margin: 0;
+}
+
+.menuList__item {
     display: inline-block;
-    margin: 15px;
-    padding: 10px;
+    margin: 0 .5rem;
+    font-size: 24px;
+}
+
+.menuList__item:last-child {
+    margin-right: 0;
+}
+
+.btn {
+    background-color: var(--accent-color);
+    padding: 1rem 2rem;
+    font-size: 24px;
+    border-radius: 10% / 50%;
+}
+
+
+/* Content */
+.content {
+    max-width: var(--max-width);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.content__claim {
+    font-size: 64px;
+    color: var(--accent-color);
+    margin: 0;
+}
+
+.content__subclaim {
+    font-size: 36px;
+    margin: .5rem 0;
+    margin-bottom: 2rem;
+}
+
+
+/* Footer */
+.footerDiv {
+    background-color: black;
+}
+
+.footer {
+    max-width: var(--max-width);
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__widget {
+    font-size: 24px;
+}
+
+.footer__widget__title{
+    color: var(--accent-color);
+    margin: 0 0 1rem 0;
+}
+
+.footer__widget__text {
+    margin: 0;
 }

@@ -1,67 +1,42 @@
+//clase
+let claseDefinida = "";
+let claseIngresada = false;
 
-const nick = prompt("Ingrese un nick");
 
-const clase = prompt("Su clase: Paladin, Mago, Orco, Fauno");
-const paladin = "Paladin";
-const wizard = "Mago";
-const orco = "Orco";
-const fauno = "Fauno";
+do {
+    if (claseIngresada) {
+        claseDefinida = claseDefinida + claseIngresada;
+    }
+    claseIngresada = prompt("Ingrese su clase: \n1.Paladin \n2.Mago \n3.Orco \n4.Fauno \n5.Para terminar escriba ESC"); 
+} while (claseIngresada !== "ESC");
 
-const elemento = prompt("Su elemento: Agua, Fuego, Aire, Tierra");
-const agua = "Agua";
-const fuego = "Fuego";
-const aire = "Aire";
-const tierra = "Tierra"
 
-const dmg = prompt("Su tipo de daño: Fisico, Magico, Elemental, Invocacion");
-const fisico = "Fisico";
-const magico = "Magico";
-const element = "Elemental";
-const summon = "Invocacion";
+//daño
+let dmgDefinido = "";
+let dmgIngresado = false;
 
-const caract = prompt("Su caracterista: Humano, Semidios, Dios, Zombi");
-const humano = "Humano";
-const semgod = "Semidios";
-const dios = "Dios";
-const zombi = "Zombi";
+do {
+    if (dmgIngresado) {
+        dmgDefinido = dmgDefinido + dmgIngresado;
+    }
+    dmgIngresado = prompt("Ingrese su clase: \n1.Fisico \n2.Magico \n3.Elemental \n4.Para terminar escriba ESC"); 
+} while (dmgIngresado !== "ESC");
 
-console.log(nick);
-console.log(clase);
-console.log(elemento);
-console.log(dmg);
-console.log(caract);
 
-if ((clase === paladin || clase === wizard || clase === orco || clase === fauno) && (clase !== "")) {
-    console.log("Clase valida");
-} else { 
-    alert("Clase no valida");
+//elemento
+let elementoDefnidio = "";
+let elementoIngresado = false;
+
+do {
+    if (elementoIngresado) {
+        elementoDefnidio = elementoDefnidio + elementoIngresado
+    }
+    elementoIngresado = prompt("Ingrese su clase: \n1.Agua \n2.Tierra \n3.Fuego \n4.Aire \n5.Para terminar escriba ESC"); 
+} while (elementoIngresado !== "ESC");
+
+function crearPersonaje() {
+    alert("Su personaje creado es un: " + claseDefinida + "\n" + "Su daño es: " + dmgDefinido + "\n" + "Utiliza el elemento: " + elementoDefnidio);
 }
 
-if ((elemento === agua || elemento === fuego || elemento === aire || elemento === tierra) && (elemento !== "")) {
-    console.log("Elemento valido");
-} else {
-    alert("Elemento no valido");
-}
-
-if ((dmg === fisico || dmg === magico || dmg === element || dmg === summon) && (dmg !== "")) {
-    console.log("Daño Valido");
-} else {
-    alert("Daño no valido");
-}
-
-if ((caract === humano || caract === semgod || caract === dios || caract === zombi) && (caract !== "")) {
-    console.log("Caracteristica valida");
-} else {
-    alert("Caracteristica no valida");
-}
-
-
-
-alert("Su presonaje creado : " + " " + nick + "\nEs un " + clase + " " + caract + " con daño " + dmg + " de " + elemento);
-
-
-
-
-
-
+crearPersonaje();
 
