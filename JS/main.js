@@ -1,9 +1,9 @@
 function personajePredefinido () {
-    alert("Su personaje creado es un: " + caractPersonaje["clase"] + "\n" + "Su daño es: " + caractPersonaje["dmg"] + "\n" + "Utiliza el/los elementos: " + caractPersonaje["elemento"] + "\n" + "Se especializa en el uso de: " + caractPersonaje["skill"]);           
+    return alert("Su personaje creado es un: " + caractPersonaje["clase"] + "\n" + "Su daño es: " + caractPersonaje["dmg"] + "\n" + "Utiliza el/los elementos: " + caractPersonaje["elemento"] + "\n" + "Se especializa en el uso de: " + caractPersonaje["skill"]);           
 }
 
 // objeto
-let caractPersonaje = {
+const caractPersonaje = {
     clase: "Semidios",
     dmg: "AOE",
     elemento: "Todos",
