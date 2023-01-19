@@ -1,5 +1,5 @@
 function personajePredefinido () {
-    return alert("Su personaje creado es un: " + caractPersonaje["clase"] + "\n" + "Su daño es: " + caractPersonaje["dmg"] + "\n" + "Utiliza el/los elementos: " + caractPersonaje["elemento"] + "\n" + "Se especializa en el uso de: " + caractPersonaje["skill"]);           
+    alert("Su personaje creado es un: " + caractPersonaje["clase"] + "\n" + "Su daño es: " + caractPersonaje["dmg"] + "\n" + "Utiliza el/los elementos: " + caractPersonaje["elemento"] + "\n" + "Se especializa en el uso de: " + caractPersonaje["skill"]);           
 }
 
 // objeto
@@ -11,15 +11,17 @@ const caractPersonaje = {
 }
 
 // personaje predefinido
-let numeroIngresado = " ";
-let personajeCreado = prompt("Si quiere crear un personaje predefinido ingrese SI, de lo contrario escriba ESC")
+let palabraIngresado = "";
+let personajeCreado = false;
 
 do {
-    if (personajeCreado == "SI") {
-    personajePredefinido();
-    } 
-} while (personajeCreado != "ESC");
+    if (personajeCreado) {
+        palabraIngresado = palabraIngresado + personajeCreado; 
+    }
+    personajeCreado = prompt("Si quiere crear un personaje predefinido ingrese la palabra si, de lo contrario escriba ESC"); 
+} while (personajeCreado != "ESC" && personajeCreado === "SI");
 
+personajePredefinido();
 
 // clase
 let claseDefinida = "";
