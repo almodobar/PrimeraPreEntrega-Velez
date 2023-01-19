@@ -128,3 +128,22 @@ a {
 .footer__widget__text {
     margin: 0;
 }
+
+/* Pagina jugar */
+.conteinerPlay {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-width: var(--min-width);
+    background-image: url(./img/fondoCreacionPj.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.imgPlay {
+    margin-left: 80px;
+    height: 50vh;
+    opacity: 0.9;
+    border-radius: 5%;
+}
