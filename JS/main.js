@@ -1,77 +1,75 @@
-function personajePredefinido () {
-    alert("Su personaje creado es un: " + caractPersonaje["clase"] + "\n" + "Su daño es: " + caractPersonaje["dmg"] + "\n" + "Utiliza el/los elementos: " + caractPersonaje["elemento"] + "\n" + "Se especializa en el uso de: " + caractPersonaje["skill"]);           
-}
+class Personaje {
+    constructor(clase, damage, elemento, habilidad) {
+      this.clase = clase;
+      this.damage = damage;
+      this.elemento = elemento;
+      this.habilidad = habilidad;
+    } 
+ };
+  
+  class PersonajeCreado {
+    constructor() {
+      this.personaje = [];
+    };
 
-// objeto
-const caractPersonaje = {
-    clase: "Semidios",
-    dmg: "AOE",
-    elemento: "Todos",
-    skill: "Arma de largo alcanze"
-}
-
-// personaje predefinido
-let palabraIngresado = "";
-let personajeCreado = false;
-
-do {
-    if (personajeCreado) {
-        palabraIngresado = palabraIngresado + personajeCreado; 
+    agregarPersonaje(clase, damage, elemento, habilidad) {
+      const personajes = new Personaje(clase, damage, elemento, habilidad);
+      this.personaje.push(personajes);
     }
-    personajeCreado = prompt("Si quiere crear un personaje predefinido ingrese la palabra si, de lo contrario escriba ESC"); 
-} while (personajeCreado != "ESC" && personajeCreado === "SI");
+  };
+  
+  const personajeCreado = new PersonajeCreado();
+  
+  let continuar = false;
 
-personajePredefinido();
+  // CLASE
+  let clase;
+  let damage;
+  let elemento;
+  let habilidad;
 
-// clase
-let claseDefinida = "";
-let claseIngresada = false;
+  do {
+    clase = prompt('"Ingrese su clase: \n1.Humano \n2.Dios \n3.Elfo \n4.Orco:');
+    damage = prompt('Ingrese su clase: \n1.Fisico \n2.Magico \n3.Elemental \n4.Mascota:');
+    elemento = prompt('Ingrese su clase: \n1.Agua \n2.Tierra \n3.Fuego \n4.Aire:');
+    habilidad = prompt('Ingrese su clase: \n1.Arma ligera \n2.Arma pesada \n3.Magia \n4.Invocacion:');
+  
+    continuar = prompt('Quiere continuar ingresando valores? (y/N)') === 'y';
+  
+    personajeCreado.agregarPersonaje(clase, damage, elemento, habilidad);
+  } while(continuar);
 
-do {
-    if (claseIngresada) {
-        claseDefinida = claseDefinida + claseIngresada;
-    }
-    claseIngresada = prompt("Ingrese su clase: \n1.Humano \n2.Dios \n3.Elfo \n4.Orco \n5.Para terminar escriba ESC"); 
-} while (claseIngresada != "ESC");
+/*   // DAÑO
+  let damage;
+  do {
+    damage = prompt('Ingrese su daño:');
+  
+    continuar = prompt('Quiere continuar ingresando valores? (y/N)') === 'y';
+  
+    personajeCreado.agregarPersonaje(damage);
+  } while(continuar);
 
+  //ELEMENTO
+  let elemento;
+  do {
+    elemento = prompt('Ingrese su elemento:');
+  
+    continuar = prompt('Quiere continuar ingresando valores? (y/N)') === 'y';
+  
+    personajeCreado.agregarPersonaje(elemento);
+  } while(continuar);
+  
+  //HABILIDAD
+  let habilidad;
+  do {
+    habilidad = prompt('Ingrese su habilidad:');
+  
+    continuar = prompt('Quiere continuar ingresando valores? (y/N)') === 'y';
+  
+    personajeCreado.agregarPersonaje(habilidad);
+  } while(continuar); */
 
-// daño
-let dmgDefinido = "";
-let dmgIngresado = false;
+  
+  alert('El personaje creado es: ' + "\n" + JSON.stringify(personajeCreado));
 
-do {
-    if (dmgIngresado) {
-        dmgDefinido = dmgDefinido + dmgIngresado;
-    }
-    dmgIngresado = prompt("Ingrese su clase: \n1.Fisico \n2.Magico \n3.Elemental \n4.Mascota \n5.Para terminar escriba ESC"); 
-} while (dmgIngresado !== "ESC");
-
-
-// elemento
-let elementoDefnidio = "";
-let elementoIngresado = false;
-
-do {
-    if (elementoIngresado) {
-        elementoDefnidio = elementoDefnidio + elementoIngresado
-    }
-    elementoIngresado = prompt("Ingrese su clase: \n1.Agua \n2.Tierra \n3.Fuego \n4.Aire \n5.Para terminar escriba ESC"); 
-} while (elementoIngresado != "ESC");
-
-// habilidad
-let habilidadDefnidio = "";
-let habilidadoIngresado = false;
-
-do {
-    if (habilidadoIngresado) {
-        habilidadDefnidio = habilidadDefnidio + habilidadoIngresado
-    }
-    habilidadoIngresado = prompt("Ingrese su clase: \n1.Arma ligera \n2.Arma pesada \n3.Magia \n4.Invocacion \n5.Para terminar escriba ESC"); 
-} while (habilidadoIngresado != "ESC");
-
-
-function crearPersonaje() {
-    alert("Su personaje creado es un: " + claseDefinida + "\n" + "Su daño es: " + dmgDefinido + "\n" + "Utiliza el/los elementos: " + elementoDefnidio + "\n" + "Se especializa en el uso de: " + habilidadDefnidio);
-}
-
-crearPersonaje();
+  console.log(personajeCreado);
