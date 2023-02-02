@@ -9,6 +9,6 @@ class Personaje {
     };
 
     mayorDeEdad() {
-        return personaje.edad < 14;
+        return this.edad < 14;
     };
 };
