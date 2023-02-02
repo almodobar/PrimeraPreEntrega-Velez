@@ -7,6 +7,12 @@ const personajes = personajesLocalStorage.map((personaje) => {
   return new Personaje(personaje);
 });
 
+const borrarInputValueTabla = (e) => {
+  for (const input of e.target) {
+    input.value = "";
+  };
+};
+
 const agregarFilaTabla = (personaje) => {
   const tr = document.createElement("tr")
   tr.innerHTML = `
@@ -51,6 +57,7 @@ formulario.addEventListener("submit", (e) => {
   });
     
   if (personaje.mayorDeEdad()) {
+    borrarInputValueTabla(e);
     mensajeError.innerText = `Tu personaje debe tener mas de 14 años, tienes ${personaje.edad}`
     return;
   };
@@ -60,9 +67,7 @@ formulario.addEventListener("submit", (e) => {
 
   agregarFilaTabla(personaje);
 
-  for (const input of e.target) {
-    input.value = "";
-  };
+  borrarInputValueTabla(e);
 
 });
 
