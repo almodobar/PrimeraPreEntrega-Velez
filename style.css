@@ -20,7 +20,12 @@ a {
     color: white;
 }
 
-.container {
+.menuList__item a {
+    text-decoration: none;
+    color: white;
+}
+
+.containerMain {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -74,7 +79,7 @@ a {
     margin-right: 0;
 }
 
-.btn {
+.btnPropio {
     background-color: var(--accent-color);
     padding: 1rem 2rem;
     font-size: 24px;
@@ -121,7 +126,7 @@ a {
 }
 
 .footer__widget__title{
-    color: var(--accent-color);
+    color: var(--container-color);
     margin: 0 0 1rem 0;
 }
 
@@ -131,19 +136,25 @@ a {
 
 /* Pagina jugar */
 .conteinerPlay {
+    color: rgb(19, 18, 18);
     height: 100vh;
     display: flex;
     flex-direction: column;
     min-width: var(--min-width);
-    background-image: url(./img/fondoCreacionPj.jpg);
+    background-image: url(./img/fondoCreacionPj.jpg); /* COMENTAR ESTA LINEA SI NO FUNCIONA */
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
 
-.imgPlay {
-    margin-left: 80px;
-    height: 50vh;
-    opacity: 0.9;
-    border-radius: 5%;
+.container {
+    background-color: aliceblue;
+    border-radius: 3%;
+    opacity: 0.89;
+    width: 50%;
+    height: 100%;
+}
+
+.menuTitle {
+    text-align: center;
 }

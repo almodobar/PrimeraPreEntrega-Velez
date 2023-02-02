@@ -1,75 +1,69 @@
-class Personaje {
-    constructor(clase, damage, elemento, habilidad) {
-      this.clase = clase;
-      this.damage = damage;
-      this.elemento = elemento;
-      this.habilidad = habilidad;
-    } 
- };
-  
-  class PersonajeCreado {
-    constructor() {
-      this.personaje = [];
-    };
 
-    agregarPersonaje(clase, damage, elemento, habilidad) {
-      const personajes = new Personaje(clase, damage, elemento, habilidad);
-      this.personaje.push(personajes);
-    }
+const formulario = document.getElementById("ingreso-personaje");
+const mensajeError = document.getElementById("mensaje-error");
+const tabla = document.getElementById("tabla");
+const personajesLocalStorage = JSON.parse(localStorage.getItem("personajes")) || [];
+const personajes = personajesLocalStorage.map((personaje) => {
+  return new Personaje(personaje);
+});
+
+const agregarFilaTabla = (personaje) => {
+  const tr = document.createElement("tr")
+  tr.innerHTML = `
+  <td>${personaje.alias}</td>
+  <td>${personaje.clase}</td>
+  <td>${personaje.damage}</td>
+  <td>${personaje.elemento}</td>
+  <td>${personaje.arma}</td>
+  <td>${personaje.edad}</td>
+  `;
+
+  const alias = personaje.alias;
+  const botonAccion = document.createElement("botonAccion");
+  botonAccion.innerHTML = `<button class="btn btn-warning mb-3">Eliminar</button>`;
+  botonAccion.onclick = () => {
+    const personajeEncontrado = personajes.find((element) => element.alias === alias);
+    const indice = personajes.indexOf(personajeEncontrado);
+    personajes.splice(indice, 1);
+    localStorage.setItem("personajes", JSON.stringify(personajes));
+    tr.remove();
   };
-  
-  const personajeCreado = new PersonajeCreado();
-  
-  let continuar = false;
 
-  // CLASE
-  let clase;
-  let damage;
-  let elemento;
-  let habilidad;
+  tr.append(botonAccion);
 
-  do {
-    clase = prompt('"Ingrese su clase: \n1.Humano \n2.Dios \n3.Elfo \n4.Orco:');
-    damage = prompt('Ingrese su clase: \n1.Fisico \n2.Magico \n3.Elemental \n4.Mascota:');
-    elemento = prompt('Ingrese su clase: \n1.Agua \n2.Tierra \n3.Fuego \n4.Aire:');
-    habilidad = prompt('Ingrese su clase: \n1.Arma ligera \n2.Arma pesada \n3.Magia \n4.Invocacion:');
-  
-    continuar = prompt('Quiere continuar ingresando valores? (y/N)') === 'y';
-  
-    personajeCreado.agregarPersonaje(clase, damage, elemento, habilidad);
-  } while(continuar);
+  tabla.append(tr);
+}
 
-/*   // DAÑO
-  let damage;
-  do {
-    damage = prompt('Ingrese su daño:');
-  
-    continuar = prompt('Quiere continuar ingresando valores? (y/N)') === 'y';
-  
-    personajeCreado.agregarPersonaje(damage);
-  } while(continuar);
+for (const personaje of personajes) {
+  agregarFilaTabla(personaje);
+};
 
-  //ELEMENTO
-  let elemento;
-  do {
-    elemento = prompt('Ingrese su elemento:');
-  
-    continuar = prompt('Quiere continuar ingresando valores? (y/N)') === 'y';
-  
-    personajeCreado.agregarPersonaje(elemento);
-  } while(continuar);
-  
-  //HABILIDAD
-  let habilidad;
-  do {
-    habilidad = prompt('Ingrese su habilidad:');
-  
-    continuar = prompt('Quiere continuar ingresando valores? (y/N)') === 'y';
-  
-    personajeCreado.agregarPersonaje(habilidad);
-  } while(continuar); */
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-  
-  alert('El personaje creado es: ' + "\n" + JSON.stringify(personajeCreado));
+  const personaje = new Personaje ({
+    alias: e.target[0].value,
+    clase: e.target[1].value,
+    damage: e.target[2].value,
+    elemento: e.target[3].value,
+    arma: e.target[4].value,
+    edad: e.target[5].value,
+  });
+    
+  if (personaje.mayorDeEdad()) {
+    mensajeError.innerText = `Tu personaje debe tener mas de 14 años, tienes ${personaje.edad}`
+    return;
+  };
 
-  console.log(personajeCreado);
+  personajes.push(personaje);
+  localStorage.setItem("personajes", JSON.stringify(personajes));
+
+  agregarFilaTabla(personaje);
+
+  for (const input of e.target) {
+    input.value = "";
+  };
+
+});
+
+
