@@ -137,22 +137,24 @@ a {
 /* Pagina jugar */
 .conteinerPlay {
     color: rgb(19, 18, 18);
-    height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     min-width: var(--min-width);
     background-image: url(./img/fondoCreacionPj.jpg); /* COMENTAR ESTA LINEA SI NO SE VISUALIZA LA TABLA CORRECTAMENTE */
-    background-repeat: no-repeat;
-    background-position: center;
+    background-repeat: repeat;
+    background-position: center center;
     background-size: cover;
+    position: relative;
 }
 
 .container {
     background-color: aliceblue;
     border-radius: 3%;
     opacity: 0.89;
-    width: 50%;
+    width: 100%;
     height: 100%;
+    position: relative;
 }
 
 .menuTitle {

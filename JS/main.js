@@ -13,26 +13,38 @@ const borrarInputValueTabla = (e) => {
   };
 };
 
-const agregarFilaTabla = (personaje) => {
+const agregarFilaTabla = ({ alias, clase, damage, elemento, arma, edad}) => {
   const tr = document.createElement("tr")
   tr.innerHTML = `
-  <td>${personaje.alias}</td>
-  <td>${personaje.clase}</td>
-  <td>${personaje.damage}</td>
-  <td>${personaje.elemento}</td>
-  <td>${personaje.arma}</td>
-  <td>${personaje.edad}</td>
+  <td>${alias}</td>
+  <td>${clase}</td>
+  <td>${damage}</td>
+  <td>${elemento}</td>
+  <td>${arma}</td>
+  <td>${edad}</td>
   `;
 
-  const alias = personaje.alias;
   const botonAccion = document.createElement("botonAccion");
   botonAccion.innerHTML = `<button class="btn btn-warning mb-3">Eliminar</button>`;
   botonAccion.onclick = () => {
-    const personajeEncontrado = personajes.find((element) => element.alias === alias);
-    const indice = personajes.indexOf(personajeEncontrado);
-    personajes.splice(indice, 1);
-    localStorage.setItem("personajes", JSON.stringify(personajes));
-    tr.remove();
+    Swal.fire({
+      title: `Seguro que quiere eliminar el personaje ${alias}?`,
+      text: `No podras volver atras una vez realizado el cambio!`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: `Si, borrar personaje!`,
+      cancelButtonText: `Cancelar!`
+    }).then((respuesta) => {
+      if (respuesta.isConfirmed) {
+        const personajeEncontrado = personajes.find((element) => element.alias === alias);
+        const indice = personajes.indexOf(personajeEncontrado);
+        personajes.splice(indice, 1);
+        localStorage.setItem("personajes", JSON.stringify(personajes));
+        tr.remove();
+      }
+    });
   };
 
   tr.append(botonAccion);
@@ -47,18 +59,19 @@ for (const personaje of personajes) {
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  const [aliasIngreso, claseIngreso, damageIngreso, elementoIngreso, armaIngreso, edadIngreso] = e.target;
   const personaje = new Personaje ({
-    alias: e.target[0].value,
-    clase: e.target[1].value,
-    damage: e.target[2].value,
-    elemento: e.target[3].value,
-    arma: e.target[4].value,
-    edad: e.target[5].value,
+    alias: aliasIngreso.value,
+    clase: claseIngreso.value,
+    damage: damageIngreso.value,
+    elemento: elementoIngreso.value,
+    arma: armaIngreso.value,
+    edad: edadIngreso.value,
   });
     
   if (personaje.mayorDeEdad()) {
     borrarInputValueTabla(e);
-    mensajeError.innerText = `Tu personaje debe tener mas de 14 años, tienes ${personaje.edad}`
+    mensajeError.innerText = `Tu personaje debe tener mas de 14 años, tienes ${personaje.edad}`;
     return;
   };
 
@@ -69,6 +82,15 @@ formulario.addEventListener("submit", (e) => {
 
   borrarInputValueTabla(e);
 
+  Toastify({
+    text: "Su personaje se agrego correctamente",
+    duration: 2000,
+    backgroundColor: `linear-gradient(90deg, rgba(101,98,149,1) 2%, rgba(96,96,210,1) 49%, rgba(27,162,190,1) 99%)`,
+    offset: {
+      x: 20, 
+      y: 90
+    },
+    }).showToast();
 });
 
 
