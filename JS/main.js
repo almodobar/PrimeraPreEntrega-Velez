@@ -2,6 +2,18 @@
 const formulario = document.getElementById("ingreso-personaje");
 const mensajeError = document.getElementById("mensaje-error");
 const tabla = document.getElementById("tabla");
+
+let clasesDelPersonaje = [];
+let damagesDelPersonaje = [];
+let elementosDelPersonaje = [];
+let armasDelPersonaje = [];
+
+clasesPersonaje();
+damagesPersonaje();
+elementosPersonaje();
+armasPersonaje();
+
+
 const personajesLocalStorage = JSON.parse(localStorage.getItem("personajes")) || [];
 const personajes = personajesLocalStorage.map((personaje) => {
   return new Personaje(personaje);
@@ -13,14 +25,14 @@ const borrarInputValueTabla = (e) => {
   };
 };
 
-const agregarFilaTabla = ({ alias, clase, damage, elemento, arma, edad}) => {
+const agregarFilaTabla = ({ alias, clase, damage, elemento, arma, edad }) => {
   const tr = document.createElement("tr")
   tr.innerHTML = `
   <td>${alias}</td>
-  <td>${clase}</td>
-  <td>${damage}</td>
-  <td>${elemento}</td>
-  <td>${arma}</td>
+  <td>${clasesDelPersonaje.find(claseDelPersonaje => claseDelPersonaje.id === clase)?.nombre}</td>
+  <td>${damagesDelPersonaje.find(damageDelPersonaje => damageDelPersonaje.id === damage)?.nombre}</td>
+  <td>${elementosDelPersonaje.find(elementoDelPersonaje => elementoDelPersonaje.id === elemento)?.nombre}</td>
+  <td>${armasDelPersonaje.find(armaDelPersonaje => armaDelPersonaje.id === arma)?.nombre}</td>
   <td>${edad}</td>
   `;
 
@@ -92,5 +104,3 @@ formulario.addEventListener("submit", (e) => {
     },
     }).showToast();
 });
-
-

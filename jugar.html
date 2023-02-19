@@ -29,27 +29,27 @@
         </header>
         <div class="container">
             <h1 class="menuTitle">Generacion de personaje</h1>
-            <h2 class="menuTitle">Puede crear hasta 5 personajes para crear su alianza</h2>
+            <h2 class="menuTitle">Puedes crear hasta 5 personajes para crear tu alianza</h2>
                 <form id="ingreso-personaje">
                     <div class="mb-3">
                         <label for="alias" class="form-label">Alias:</label>
                         <input type="text" class="form-control" id="alias" required>
                     </div>
                     <div class="mb-3">
-                        <label for="clase" class="form-label">Clase: [Humano, Dios, Elfo, Orco]</label>
-                        <input type="text" class="form-control" id="clase" required>
+                        <label for="clase" class="form-label">Clase:</label>
+                        <select class="form-select form-control" id="clase" required aria-label="Default select example"></select>
                     </div>
                     <div class="mb-3">
-                        <label for="damage" class="form-label">Daño: [Fisico, Magico, Elemental, Mascota]</label>
-                        <input type="text" class="form-control" id="damage" required>
+                        <label for="damage" class="form-label">Daño:</label>
+                        <select class="form-select form-control" id="damage" required aria-label="Default select example"></select>
                     </div>
                     <div class="mb-3">
-                        <label for="elemento" class="form-label">Elemento: [Agua, Fuego, Tierra, Aire]</label>
-                        <input type="text" class="form-control" id="elemento" required>
+                        <label for="elemento" class="form-label">Elemento:</label>
+                        <select class="form-select form-control" id="elemento" required aria-label="Default select example"></select>
                     </div>
                     <div class="mb-3">
-                        <label for="arma" class="form-label">Arma: [Arma ligera, Arma pesada, Baculo, Arco]</label>
-                        <input type="text" class="form-control" id="arma" required>
+                        <label for="arma" class="form-label">Arma:</label>
+                        <select class="form-select form-control" id="arma" required aria-label="Default select example"></select>
                     </div>
                     <div class="mb-3">
                         <label for="edad" class="form-label">Edad del personaje:</label>
@@ -74,6 +74,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="./JS/funcionesAsync.js"></script>
     <script src="./JS/Personaje.js"></script>
     <script src="./JS/main.js"></script>
 </body>

@@ -141,7 +141,7 @@ a {
     display: flex;
     flex-direction: column;
     min-width: var(--min-width);
-    background-image: url(./img/fondoCreacionPj.jpg); /* COMENTAR ESTA LINEA SI NO SE VISUALIZA LA TABLA CORRECTAMENTE */
+    background-image: url(./img/fondoCreacionPj.jpg);
     background-repeat: repeat;
     background-position: center center;
     background-size: cover;

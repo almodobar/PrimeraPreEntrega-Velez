@@ -1,0 +1,18 @@
+[
+    {
+        "id": "5",
+        "nombre": "Fisico"
+    },
+    {
+        "id": "6",
+        "nombre": "Magico"
+    },
+    {
+        "id": "7",
+        "nombre": "Elemental"
+    },
+    {
+        "id": "8",
+        "nombre": "Inviocacion"
+    }
+]

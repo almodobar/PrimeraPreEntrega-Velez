@@ -1,0 +1,18 @@
+[
+    {
+        "id": "13",
+        "nombre": "Arma ligera"
+    },
+    {
+        "id": "14",
+        "nombre": "Arma pesada"
+    },
+    {
+        "id": "15",
+        "nombre": "Arma de largo alcance"
+    },
+    {
+        "id": "16",
+        "nombre": "Baculo"
+    }
+]
