@@ -95,7 +95,7 @@ formulario.addEventListener("submit", (e) => {
   borrarInputValueTabla(e);
 
   Toastify({
-    text: "Su personaje se agrego correctamente",
+    text: "Personaje creado con éxito",
     duration: 2000,
     backgroundColor: `linear-gradient(90deg, rgba(101,98,149,1) 2%, rgba(96,96,210,1) 49%, rgba(27,162,190,1) 99%)`,
     offset: {
